@@ -12,12 +12,12 @@
               <i class="fa fa-spinner fa-spin fa-fw"></i>
               <span class="sr-only">Loading...</span> {{ output}}</h6>
             <form >
-              <p>User Name : <input v-model="uname" type="text" ></p>
-              <p>Password : <input v-model="password"  type="password" ></p>
+              <p>User Name : <input v-model="uname" type="text" v-on:keyup="disabled_btn" ></p>
+              <p>Password : <input v-model="password"  type="password" v-on:keyup="disabled_btn"></p>
               <p><input type="checkbox" value="Logged In"  v-model="ischecked" >
               <label v-if="ischecked">{{ its_ck }}</label>
               <label v-else>Stay Logged in?</label></p>
-              <button type="button" @click="login" class="success button expanded">Login</button>
+              <button type="button" @click="login" class="success button expanded" v-bind:class="{ disabled: isDsb }">Login</button>
               <p><button type="button" class="primary button">SignUp</button></p>
             </form>
           </div>
@@ -41,18 +41,29 @@ export default {
       output: '',
       login_status: 'false',
       uname: '',
-      password: ''
+      password: '',
+      isDsb: true
     }
 },
 methods:{
   login: function(){
     if (this.uname !='' && this.password != '') {
       this.output = 'You Have submited your Login details successfully, You will be redirected soonest';
-      this.login_status = 'true'
+      this.login_status = 'true';
+
+
 
     }else {
       this.login_status = 'false'
     }
+  },
+
+  disabled_btn: function(){
+      if (this.uname !='' && this.password != '') {
+        this.isDsb = false;
+      }else{
+          this.isDsb = true;
+      }
   }
 }
 }
