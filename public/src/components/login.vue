@@ -1,5 +1,5 @@
 <template lang="html">
-  <div >
+
     <div class="grid-container">
       <div class="">
         <div class="grid-x grid-margin-x">
@@ -22,11 +22,20 @@
               <p><button type="button" class="primary button">SignUp</button></p>
             </form>
 
+            <table>
+              <thead>
+                <tr>
+                  <h5>User Loged In to the system</h5>
+                </tr>
+              </thead>
+              <tbody v-for="user in session_data">
+                <tr>
+                  <td>{{user.time }}</td>
+                  <td>{{user.name }}</td>
+                </tr>
+              </tbody>
+            </table>
 
-              <li v-for="(s_data, index) in session_data">
-                 {{ index }} - {{ s_data.name }}
-              </li>
-            </ul>
 
 
           <div class="cell small-2">
@@ -50,7 +59,9 @@ export default {
       uname: '',
       password: '',
       isDsb: true,
-      session_data: [{name: "raf", date:"2017/99/00"} ]
+      session_data: [
+
+     ]
     }
 },
 computed:{
@@ -67,6 +78,11 @@ methods:{
     if (this.uname !='' && this.password != '') {
       this.output = 'You Have submited your Login details successfully, You will be redirected soonest';
       this.login_status = true;
+
+      var date = new Date();
+      var today = date.getTime() ;
+
+      this.session_data.push({name: this.uname, time:this.today});
     }else {
       this.login_status = false
     }
