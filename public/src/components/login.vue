@@ -8,7 +8,7 @@
           </div>
 
           <div class="cell small-8">
-            <h6 class="status" v-if="login_status == 'true'">
+            <h6 class="status" v-if="login_status">
               <i class="fa fa-spinner fa-spin fa-fw"></i>
               <span class="sr-only">Loading...</span> {{ output}}</h6>
             <form >
@@ -18,9 +18,16 @@
               <label v-if="ischecked">{{ its_ck }}</label>
               <label v-else>Stay Logged in?</label></p>
               <button type="button" @click="login" class="success button expanded" v-bind:class="{ disabled: isDsb }">Login</button>
+              <p> <label>{{validate}}</label> </p>
               <p><button type="button" class="primary button">SignUp</button></p>
             </form>
-          </div>
+
+
+              <li v-for="(s_data, index) in session_data">
+                 {{ index }} - {{ s_data.name }}
+              </li>
+            </ul>
+
 
           <div class="cell small-2">
 
@@ -39,22 +46,29 @@ export default {
       ischecked: '',
       its_ck: 'You will remain logged in',
       output: '',
-      login_status: 'false',
+      login_status: false,
       uname: '',
       password: '',
-      isDsb: true
+      isDsb: true,
+      session_data: [{name: "raf", date:"2017/99/00"} ]
     }
+},
+computed:{
+  validate: function() {
+    if(this.uname == "rkaranja"){
+      return "Username is taken";
+    }else{
+      return "";
+    }
+  }
 },
 methods:{
   login: function(){
     if (this.uname !='' && this.password != '') {
       this.output = 'You Have submited your Login details successfully, You will be redirected soonest';
-      this.login_status = 'true';
-
-
-
+      this.login_status = true;
     }else {
-      this.login_status = 'false'
+      this.login_status = false
     }
   },
 
