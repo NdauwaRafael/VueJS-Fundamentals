@@ -19,7 +19,9 @@
               <label v-else>Stay Logged in?</label></p>
               <button type="button" @click="login" class="success button expanded" v-bind:class="{ disabled: isDsb }">Login</button>
               <p> <label>{{validate}}</label> </p>
-              <p><button type="button" class="primary button">SignUp</button></p>
+              <p>
+                <router-link type="button" class="reg-btn button" :to="{ name: 'register'}">SignUp</router-link>
+              </p>
             </form>
 
             <table>
@@ -48,6 +50,7 @@
 </template>
 
 <script>
+import validateform from '../mixins/validateform';
 export default {
   name: 'login',
   data(){
@@ -79,23 +82,16 @@ methods:{
       this.output = 'You Have submited your Login details successfully, You will be redirected soonest';
       this.login_status = true;
 
-      var date = new Date();
-      var today = date.getTime() ;
+      // var date = new Date();
+      var today = new Date();
 
-      this.session_data.push({name: this.uname, time:this.today});
+      this.session_data.push({name: this.uname, time:today});
     }else {
       this.login_status = false
     }
-  },
-
-  disabled_btn: function(){
-      if (this.uname !='' && this.password != '') {
-        this.isDsb = false;
-      }else{
-          this.isDsb = true;
-      }
   }
-}
+},
+mixins:[validateform]
 }
 </script>
 
@@ -103,5 +99,10 @@ methods:{
 <style lang="css">
 .status {
   color: #33691e;
+}
+
+.reg-btn {
+  background: #ab47bc !important;
+  color: #ffff;
 }
 </style>

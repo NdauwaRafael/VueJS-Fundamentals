@@ -1,17 +1,28 @@
+<script>
+import Vue from 'vue';
+import topbar from './components/title-bar.vue';
+import footdiv from './components/footer.vue';
+    export default {
+      components: {topbar, footdiv},
+      name: 'app',
+    }
+</script>
+
+
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h5>Login to Event Manager</h5>
-    <hr>
-    <router-view/>
+    <div class="">
+      <topbar></topbar>
+    </div>
+    <div class="">
+      <router-view></router-view>
+    </div>
+
+  <div class="">
+    <footdiv></footdiv>
+  </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'app'
-}
-</script>
 
 <style>
 #app {
