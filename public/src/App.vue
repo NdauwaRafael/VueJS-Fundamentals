@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import topbar from './components/title-bar.vue';
 import footdiv from './components/footer.vue';
+
     export default {
       components: {topbar, footdiv},
       name: 'app',

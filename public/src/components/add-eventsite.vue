@@ -4,12 +4,12 @@
     <div class="grid-x grid-padding-x">
       <div class="medium-6 cell">
         <label>Service Id
-          <input v-model="id" type="text" placeholder=".medium-6.cell">
+          <input v-model="id" type="text" placeholder="Service Id">
         </label>
       </div>
       <div class="medium-6 cell">
         <label>Service Name
-          <input v-model="name" type="text" placeholder=".medium-6.cell">
+          <input v-model="name" type="text" placeholder="Service Name">
         </label>
       </div>
     </div>
@@ -17,7 +17,7 @@
     <div class="grid-x grid-padding-x">
       <div class="medium-6 cell">
         <label>Service Location
-          <input v-model="location" type="text" placeholder=".medium-6.cell">
+          <input v-model="location" type="text" placeholder="Service Location">
         </label>
       </div>
       <div class="medium-6 cell">
@@ -41,7 +41,7 @@
     <div class="grid-x grid-padding-x">
       <div class="medium-12 cell">
         <label>Service Description
-          <input v-model="description" type="text" placeholder=".medium-6.cell">
+          <textarea v-model="description" placeholder="Service Description"></textarea>
         </label>
       </div>
     </div>
