@@ -1,4 +1,5 @@
-export default {
+const testMixin =  {
+
   methods: {
     disabled_btn: function(){
       var opt = this.uname !='' && this.password != '';
@@ -11,3 +12,5 @@ export default {
     }
   }
 }
+
+export default testMixin;
