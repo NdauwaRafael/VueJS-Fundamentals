@@ -5,32 +5,34 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 
-const state = {
-  services: JSON.parse(localStorage.getItem('servicelist')),
+var state = {
+  services: [],
 };
 
-const getters = {
+var getters = {
   services: state => {
     return state.services
   }
 };
 
-const mutations = {
+var mutations = {
   GET_SERVICES(state) {
     state.services = JSON.parse(localStorage.getItem('servicelist'));
   }
 };
 
-const actions = {
+
+
+var actions = {
 
 };
 
 
-const store = new Vuex.Store({
+var store = new Vuex.Store({
   state,
   getters,
   mutations,
   actions
 });
-
+store.commit('GET_SERVICES');
 export default store;

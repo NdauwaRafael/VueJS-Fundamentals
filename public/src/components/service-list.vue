@@ -8,6 +8,11 @@ export default {
     services(){
       return this.$store.getters.services;
     }
+  },
+  methods: {
+        sort: function(){
+          this.$store.commit('sortName');
+        }
   }
 }
 </script>
@@ -39,7 +44,7 @@ export default {
                       </tbody>
                     </table>
                     <br>
-                    <a class="button secondary small " >Sort With Name</a>
+                    <a v-on:click="sort" class="button secondary small " >Sort With Name</a>
                 </div>
 
 
