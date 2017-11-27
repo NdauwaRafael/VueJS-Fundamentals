@@ -5,17 +5,17 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 
-var state = {
+const state = {
   services: [],
 };
 
-var getters = {
+const getters = {
   services: state => {
     return state.services
   }
 };
 
-var mutations = {
+const mutations = {
   GET_SERVICES(state) {
     state.services = JSON.parse(localStorage.getItem('servicelist'));
   }
@@ -23,12 +23,12 @@ var mutations = {
 
 
 
-var actions = {
+const actions = {
 
 };
 
 
-var store = new Vuex.Store({
+const store = new Vuex.Store({
   state,
   getters,
   mutations,
